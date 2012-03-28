@@ -7,7 +7,12 @@ public class ProfileView extends View {
     private final Profile profile;
 
     public ProfileView(Profile profile) {
-        super("profile.ftl");
+        super("views/profiles/profile.ftl");
+        this.profile = profile;
+    }
+
+    public ProfileView(Profile profile, String template) {
+        super("views/profiles/" + template);
         this.profile = profile;
     }
 

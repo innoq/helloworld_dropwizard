@@ -5,6 +5,7 @@ import javax.persistence.Persistence;
 
 import com.innoq.helloworld.config.HelloWorldConfiguration;
 import com.innoq.helloworld.resources.HelloWorldResource;
+import com.innoq.helloworld.resources.ProfilesResource;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
@@ -25,6 +26,7 @@ public class HelloWorldService extends Service<HelloWorldConfiguration> {
 		final EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("defaultPU");
 		environment.addResource(new HelloWorldResource(emf));
+		environment.addResource(new ProfilesResource(emf));
     }
 
 }
