@@ -109,19 +109,12 @@
 					<h2>User's profile updates</h2>
 
 					<div class="profile-stream">
+					<#list profile.statuses as status>
 						<div class="profile-stream-item">
-							<span class="profile-stream-item-date">12 Sep 15:44</span>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+						  <span class="profile-stream-item-date">${status.createdAt}</span>
+						  ${status.message}
 						</div>
-						<div class="profile-stream-item">
-							<span class="profile-stream-item-date">14 May 11:52</span>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						</div>
-						<div class="profile-stream-item">
-							<span class="profile-stream-item-date">11 Nov 14:03</span>
-							Test3
-						</div>
-
+	  				</#list>
 					</div>
 					<!-- /profile-stream -->
 
@@ -191,46 +184,24 @@
 <!-- /col-two -->
 
 <div id="col-three">
-	<h2>User's contacts (4)</h2>
+	<!-- TODO limit to accepted relations -->
+	<h2>User's contacts ($profile.relations.size())</h2>
 
 	<div class="contact-list-small">
+	<!-- causes SQL Exception JdbcSQLException: Feld "RELATIONS0_.ATTR_TYPE"
+	<#list profile.relations as contact>
 		<div class="contact-list-small-item">
 			<div class="contact-list-small-img">
-				<a href="/profiles/15"><img alt="15" border="0" src="/system/photos/15.jpg?1320656197" /></a>
+				<a href="/profiles/${contact.source.id}"><img alt="15" border="0" src="/system/photos/${contact.source.id}.jpg?1320656197" /></a>
 			</div>
 			<div class="contact-list-small-text">
-				<div class="contact-list-small-username"><a href="/profiles/15">Tobias Bosch</a></div>
-				<div class="contact-list-small-title">OPITZ CONSULTNG München GmbH</div>
+				<div class="contact-list-small-username"><a href="/profiles/${contact.source.id}">${contact.source.fullName}</a></div>
+				<div class="contact-list-small-title">${contact.source.company}</div>
 			</div>
-			<div class="clear"><!-- clear --></div>
-		</div><div class="contact-list-small-item">
-			<div class="contact-list-small-img">
-				<a href="/profiles/33"><img alt="33" border="0" src="/system/photos/33.jpg?1320656243" /></a>
-			</div>
-			<div class="contact-list-small-text">
-				<div class="contact-list-small-username"><a href="/profiles/33">Papick Garcia Taboada</a></div>
-				<div class="contact-list-small-title">pgt technology scouting GmbH</div>
-			</div>
-			<div class="clear"><!-- clear --></div>
-		</div><div class="contact-list-small-item">
-			<div class="contact-list-small-img">
-				<a href="/profiles/131"><img alt="131" border="0" src="/system/photos/131.jpg?1320656492" /></a>
-			</div>
-			<div class="contact-list-small-text">
-				<div class="contact-list-small-username"><a href="/profiles/131">Dirk von der Weiden</a></div>
-				<div class="contact-list-small-title">C1 SetCon GmbH</div>
-			</div>
-			<div class="clear"><!-- clear --></div>
-		</div><div class="contact-list-small-item">
-			<div class="contact-list-small-img">
-				<a href="/profiles/116"><img alt="116" border="0" src="/system/photos/116.jpg?1320656447" /></a>
-			</div>
-			<div class="contact-list-small-text">
-				<div class="contact-list-small-username"><a href="/profiles/116">Carsten Sensler</a></div>
-				<div class="contact-list-small-title">Deutsche Telekom AG</div>
-			</div>
-			<div class="clear"><!-- clear --></div>
+			<div class="clear"></div>
 		</div>
+	</#list>
+	-->
 	</div>
 	<!-- /contact-list-small -->
 </div>
