@@ -19,7 +19,10 @@ public class HelloWorldService extends Service<HelloWorldConfiguration> {
     private HelloWorldService() {
         super("hello-world");
         addBundle(new ViewBundle());
-        addBundle(new AssetsBundle());
+        addBundle(new AssetsBundle("/assets/public/stylesheets", "/stylesheets"));
+        addBundle(new AssetsBundle("/assets/public/images", "/images"));
+        addBundle(new AssetsBundle("/assets/public/images/photos/speaker", "/system/photos"));
+        addBundle(new AssetsBundle("/assets/public/javascripts", "/javascripts"));
     }
 
     @Override
