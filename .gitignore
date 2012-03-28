@@ -1,6 +1,7 @@
 /target/
 .DS_Store
 nbactions.xml
+*.erb
 .classpath
 .project
 .settings/
