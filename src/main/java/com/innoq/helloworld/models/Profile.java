@@ -43,7 +43,7 @@ public class Profile {
 
 	@ManyToOne
 	@JoinColumn(name = "private_address_id")
-	private Address privateAddress;	
+	private Address privateAddress;
 	@ManyToOne
 	@JoinColumn(name = "business_address_id")
 	private Address businessAddress;
@@ -229,6 +229,10 @@ public class Profile {
 
 	public void setStatuses(List<Status> statuses) {
 		this.statuses = statuses;
+	}
+
+	public String getFullName() {
+		return this.firstName + " " + this.lastName;
 	}
 
 }
